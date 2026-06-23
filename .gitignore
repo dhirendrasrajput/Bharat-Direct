@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+
+# Stray top-level binaries left at repo root (canonical copies live in docs/)
+/Bharat-Direct-*.docx
+/Bharat-Direct-*.pptx
+/Bharat-Direct-*.pdf
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+~$*
+*.tmp
