@@ -45,7 +45,9 @@ README.md            ← you are here
 MANIFESTO.md         ← the idea in one read; the call to the ecosystem
 spec/
   SPEC.md            ← the open protocol: pay-by-bank, risk hooks, split settlement, conformance
-fic/                 ← RUNNABLE Fraud Risk Consortium Stage-0 reference (PSI, federated)
+research/            ← evidence base BEFORE architecture
+  RESEARCH-DOSSIER.md← landscape review: DPIP, MuleHunter, TMNL, COSMIC, CIFAS, AFCX, PETs, evidence
+fic/                 ← Fraud Risk Consortium Stage-0 reference (PSI, federated) — illustrative
   demo.py            ← two banks catch each other's mules with zero data shared
   PILOT.md           ← how a bank pilots it in a day, with zero real data
 docs/
