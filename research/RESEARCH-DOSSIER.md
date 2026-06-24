@@ -98,6 +98,8 @@ India does not lack fraud-intelligence components — it lacks their **fusion an
 
 The UK PSR **50/50 sending–receiving reimbursement** is the proven incentive engine: once the *receiving (mule-hosting) bank* shares liability, contributing high-quality signal becomes self-interest rather than charity. £85k cap covers 99% of claims; vulnerable consumers exempt from the excess. This is the mechanism that turns a shared utility from a perpetually under-funded "industry good" into a self-sustaining one.
 
+**The India liability gap (a key policy finding).** RBI's [2017 customer-liability circular](https://www.rbi.org.in/commonman/English/Scripts/Notification.aspx?Id=2336) grants **zero liability** only for ***unauthorised*** transactions (reported within 3 days; burden of proof on the bank). But **APP/scam fraud is *authorised* by the victim** — so it falls *outside* the zero-liability framework, leaving scam victims largely unprotected. This is precisely the hole the UK's reimbursement regime filled. It is both the strongest *citizen-protection* argument for the FRC and the natural place for a PSR-style shared-liability incentive to be introduced in India.
+
 ---
 
 ## 10. Synthesis — design principles (what the research mandates)
@@ -126,15 +128,19 @@ This is the "open reference that feeds DPIP" stance — complementary, contribut
 
 ---
 
-## 12. Open questions / further research before architecture is finalised
+## 12. Gap closure (round 2) — what the deeper research resolved
 
-- **DPIP's published data model and APIs** (not yet public) — the FRC's interop spec must match these once available.
-- **DPDP Rules 2025** fine print on fraud-prevention legitimate use and cross-entity disclosure.
-- **Full read** of Fed-RD, Starlit, and the collaborative-AML papers for concrete VFL+PSI protocols and their measured overheads.
-- **MuleHunter.ai integration surface** — what outputs RBIH exposes to banks.
-- **Latency at Indian scale** — validating the <100 ms budget against UPI peak TPS.
-- **Liability/legal feasibility in India** of a PSR-style shared-reimbursement model.
-- **Behavioural RCT design** for the Aware Layer interventions in the Indian context (language, digital-arrest typologies).
+| Gap (from round 1) | Resolution |
+|---|---|
+| DPIP data model / phasing | **Resolved (as far as public).** DPIP **Phase 1 = a negative registry** fusing telecom + I4C data to flag bad entities; **Phase 2 = instant AI risk scores → enhanced verification / temporary debit freezes** ([The420](https://the420.in/rbi-ai-digital-payment-fraud-detection-dpip/), [NextIAS](https://www.nextias.com/ca/current-affairs/25-06-2025/dpip-rbi-banks)). **DPIP's phasing mirrors the FRC roadmap exactly** — the FRC's Stage-0 negative registry *is* DPIP Phase 1. Exact APIs remain unpublished (RBIH prototype). |
+| DPDP Rules 2025 fine print | **Resolved.** Notified **3 Jan 2025**; banks are data fiduciaries, large banks/PAs likely **Significant Data Fiduciaries** (extra duties); fraud-prevention "legitimate use" is **narrow/litigation-prone for broad disclosure**; the **legal-obligation basis needs no consent** — so a regulatory mandate (which DPIP supplies) is the cleanest legal footing ([IndusLaw](https://cms-induslaw.com/en/ind/publication/sector-specific-faqs-on-the-digital-personal-data-protection-act-2023-dpdp-act-and-digital-personal-data-protection-rules-rules-2025), [PIB Rules](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2190655)). |
+| Crypto protocols (concrete) | **Resolved.** Beyond PSI+VFL (FATE/WeBank), lightweight **CSGM** (MinHash/LSH + Bloom filters + PSI for account alignment) detects cross-bank mule networks exchanging only **~13–75 MiB** of hashed representations, **O(n)** not O(n²), validated on a **200M-account Alipay dataset** ([arXiv 2502.19952](https://ar5iv.labs.arxiv.org/html/2502.19952)). Limits: two-party/single-day, no formal DP bounds yet — multi-party + DP is the open extension. |
+| MuleHunter integration surface | **Resolved (intent).** RBIH explicitly frames it as **"an infrastructure-level facility which others can use,"** using databases from all banks/PSOs; banks/PSPs/apps are **"free to use their own fraud detection over and above MuleHunter"** — an open invitation to build the Aware Layer *on top* ([Business Standard](https://www.business-standard.com/finance/personal-finance/explained-rbi-has-a-new-ai-tool-mulehunter-ai-to-reduce-digital-frauds-124120900250_1.html)). Exact API surface still bank-private. |
+| Latency at Indian scale | **Resolved.** UPI runs **~7,500 TPS average**, 21.6bn/month, 228bn in 2025 ([Elets](https://bfsi.eletsonline.com/upi-smashes-records-with-21-6-billion-transactions-in-december-2025/)). Redis-class feature stores score **~700,000 TPS** — the <100ms inline budget is feasible, especially scoping inline scoring to high-risk/new-payee subsets. |
+| India liability feasibility | **Resolved (and significant).** Zero-liability covers only *unauthorised* transactions; **APP/scam fraud is *authorised* and uncovered** — the policy gap a PSR-style shared-reimbursement model would fill (see §9). |
+| Behavioural RCT evidence | **Resolved (directional).** Point-of-payment interventions: CoP 17–31%, pre-payment warnings 15–25%. Educational RCTs (US ~2,000 adults; BIT Canada/OSC) show effects **persisting 3+ months** ([GFLEC](https://gflec.org/wp-content/uploads/2021/04/Burke-Kieffer-Mottola-Perez-Arce-Can-Educational-Interventions-Reduce-Susceptibility-to-Financial-Fraud-CB2021.pdf)). An India-context Aware-Layer RCT (language, digital-arrest typologies) is still to be designed/run. |
+
+**Genuinely still open (carry as architecture assumptions):** DPIP's exact published APIs (await RBIH); a **multi-party, differentially-private** extension of the lightweight cross-bank graph-matching; and a **field RCT** of the Aware Layer in Indian languages/typologies.
 
 ---
 
