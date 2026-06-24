@@ -144,6 +144,43 @@ This is the "open reference that feeds DPIP" stance — complementary, contribut
 
 ---
 
+## 13. Update — two lanes (DPIP vs DSN) and where the real gaps remain
+
+A second national-scale effort has emerged that changes the map: the **Digital Suraksha Network (DSN)** — a **₹100 crore, private, volunteer-led** initiative by CoinDCX, launched early 2026 after impersonation scammers caused the wrongful arrest of its founders ([CoinDCX](https://coindcx.com/blog/coindcx-news/coindcx-announces-100-crore-fund-towards-digital-suraksha-network/), [Business Standard](https://www.business-standard.com/companies/news/coindcx-sets-up-rs-100-crore-fund-for-customer-education-after-arrest-126033001114_1.html)). It is fundamentally **different from DPIP** — a different lane, not a competitor.
+
+### 13.1 The two lanes
+
+| | **DPIP (and the state stack)** | **DSN** |
+|---|---|---|
+| Sponsor | RBI / RBIH + banks (state) | CoinDCX, volunteer-led (private) |
+| Authority | Regulatory mandate | Voluntary |
+| Scope | Bank-payment-rail fraud: mule accounts, risk scoring, freeze | Open fraud-intel API, pre-transaction link/platform verification, impersonation/fake domains, crypto |
+| Acts | At the payment, bank back-end | **Upstream of the payment** — WhatsApp link-check helpline, LEA forensics, citizen education |
+| Output | Risk scores/alerts to banks | Open API + citizen verification + a **standards working group** |
+
+They are **complementary**: DPIP is the bank back-end; DSN is the open, consumer/platform-facing, *pre-transaction* layer. Notably, DSN already occupies several things one might have called "the gap after DPIP."
+
+### 13.2 Coverage map — what is now owned vs. still thin
+
+**Owned by a funded incumbent:** bank-rail detection / mule AI / scoring / freeze (DPIP, MuleHunter); last-mile payee name-check (NPCI VoP); telecom signal (DoT FRI); citizen reporting + freeze (I4C 1930); open fraud-intel API, pre-transaction link verification, impersonation/domains, crypto fraud, education, LEA forensics, a standards WG (DSN).
+
+**Still thin / unowned (the genuine post-DPIP+DSN gaps):**
+1. **A *neutral* interoperability standard** across all silos (DPIP + MuleHunter + FRI + 1930 + DSN + platforms). DSN runs a working group, but a single firm — a crypto exchange — cannot hold the *neutral* seat; that belongs to an iSPIRT/NPCI-type convenor.
+2. **The authorised-fraud liability & reimbursement regime.** India's zero-liability rule covers only *unauthorised* transactions; APP/scam fraud the victim was tricked into authorising is uncovered. Neither DPIP nor DSN is a liability regime. This is the UK-PSR-shaped hole.
+3. **India-specific last-mile intervention science** — beyond name-matching: trance-breaker prompts, typology-naming, dynamic friction, RCT-tested in Indian languages and scam typologies.
+4. **Platform/messaging-side interception** of the persuasion phase (the AFCX-Meta model) — nascent.
+5. **Cross-border** flows — weak across all efforts.
+
+### 13.3 The contributor thesis (supersedes §11's "build" framing)
+
+With **both lanes now funded** — state (DPIP) and open-private (DSN) — the window to *build and own* a broad fraud-intelligence platform is effectively closed for an independent party. The defensible, non-redundant value is to **contribute, influence, and standardise**:
+- DSN **explicitly invites** banks, fintechs, lenders and stakeholders to participate, and funds a **multi-stakeholder standards working group** — a concrete, low-barrier door, and only months old.
+- The three thinnest gaps (neutral interop standard, the APP-liability policy, India-specific intervention science) are precisely where an individual can add value as a **contributor/advocate**, widening the coverage of efforts like DSN rather than duplicating them.
+
+**Conclusion:** the honest "worth trying" path is *contribution*, not ownership — bringing this research, the open-protocol thinking, and the Aware-Layer intervention design to DSN's working group and the policy debate.
+
+---
+
 ## References
 
 RBI DPIP — [Business Standard](https://www.business-standard.com/industry/banking/rbi-banks-to-launch-dpip-platform-to-combat-rising-digital-payment-frauds-125062200370_1.html), [BusinessToday](https://www.businesstoday.in/technology/news/story/rbi-to-launch-digital-payments-intelligence-platform-for-fraud-prevention-432489-2024-06-07), [VisionIAS](https://visionias.in/current-affairs/news-today/2025-06-24/economy/rbi-and-banks-to-develop-the-digital-payment-intelligence-platform-dpip) · MuleHunter.ai — [Banking Frontiers](https://bankingfrontiers.com/rbi-introduces-mulehunter-ai-ai-driven-solution-to-detect-mule-accounts-developed-by-rbih/), [MediaNama](https://www.medianama.com/2025/12/223-rti-23-banks-mulehunter-mule-accounts/), [RBIH](https://rbihub.in/projects/mulehunter) · DoT FRI / Sanchar Saathi — [StudyIQ](https://www.studyiq.com/articles/financial-fraud-risk-indicator/), [Tribune](https://www.tribuneindia.com/news/business/dot-sebi-sign-mou-to-curb-misuse-of-telecom-resources-in-financial-frauds/) · I4C 1930/NCRP — [i4c.mha.gov.in](https://i4c.mha.gov.in/ncrp.aspx) · TMNL — [ZQUAS](https://zquas.ai/tmnl.html), [HRIF.EU](https://hrif.eu/en/2024/07/hrifstopstmnl/) · COSMIC — [MAS](https://www.mas.gov.sg/regulation/anti-money-laundering/cosmic) · CIFAS — [cifas.org.uk](https://www.cifas.org.uk/about-cifas/governance) · AFCX — [afcx.com.au](https://www.afcx.com.au/) · FinCEN §314(b) — [fincen.gov](https://www.fincen.gov/resources/section-314b) · Confirmation of Payee — [UK Finance](https://www.ukfinance.org.uk/news-and-insight/blogs/has-confirmation-payee-been-successful-combating-app-fraud) · PSR reimbursement — [Freshfields](https://www.freshfields.com/en/our-thinking/briefings/2024/09/authorised-push-payment-fraud-a-new-mandatory-reimbursement-regime-for-uk-psps) · DPDP & banks — [Cyril Amarchand](https://corporate.cyrilamarchandblogs.com/2023/12/fig-paper-no-28-data-law-series-2-implications-of-digital-personal-data-protection-act-2023-on-indian-banks/) · PSI/VFL — [VFL survey](https://arxiv.org/pdf/2304.01829), [arXiv 2106.05508](https://arxiv.org/abs/2106.05508), [Fed-RD](https://arxiv.org/pdf/2408.01609), [Starlit](https://eprint.iacr.org/2024/090.pdf) · Graph ML — [GNN fraud review](https://www.sciencedirect.com/science/article/abs/pii/S0957417423026581), [collaborative AML](https://arxiv.org/pdf/2502.19952) · Real-time architecture — [Redis](https://redis.io/blog/real-time-fraud-detection/), [Confluent](https://www.confluent.io/blog/real-time-streaming-prevents-fraud/).
