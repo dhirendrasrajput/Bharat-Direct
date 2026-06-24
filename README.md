@@ -45,6 +45,9 @@ README.md            ← you are here
 MANIFESTO.md         ← the idea in one read; the call to the ecosystem
 spec/
   SPEC.md            ← the open protocol: pay-by-bank, risk hooks, split settlement, conformance
+fic/                 ← RUNNABLE Fraud Risk Consortium Stage-0 reference (PSI, federated)
+  demo.py            ← two banks catch each other's mules with zero data shared
+  PILOT.md           ← how a bank pilots it in a day, with zero real data
 docs/
   Bharat-Direct-Whitepaper.docx   ← full discussion paper + sourced data + precedents
   Concept-Note.md / .docx         ← 2-page forwardable note for decision-makers
@@ -64,7 +67,7 @@ The protocol is designed so **contributors and consumers integrate without rippi
 
 | Stage | What | Status |
 |---|---|---|
-| 0 | Shared mule-account reporting hub | Spec drafted |
+| 0 | Shared mule-account reporting hub (PSI, federated) | ✅ **Runnable reference in [`fic/`](fic/)** |
 | 1 | Reputation graph + risk API + Aware Layer | Spec drafted; reference WIP |
 | 2 | Federated models (no raw-data sharing) | Designed |
 | 3 | Golden-hour freeze + shared liability | Designed (needs ecosystem) |

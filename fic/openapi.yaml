@@ -1,0 +1,83 @@
+openapi: 3.0.3
+info:
+  title: Bharat Direct — Fraud Risk Consortium (FRC) API
+  version: 0.0.1-stage0
+  description: >
+    The HTTP contract that the in-process reference (coordinator.py / node.py) represents.
+    Stage 0: confirmed-mule markers shared as salted hashes; payee checks via Private Set
+    Intersection so the coordinator never learns the queried identifier. No endpoint accepts
+    or returns customer PII. Implements Profile F of the Bharat Direct protocol (see spec/SPEC.md).
+servers:
+  - url: https://frc.example/v0
+    description: A coordinator instance (run by the consortium or in a sandbox)
+
+paths:
+  /markers:
+    post:
+      summary: Contribute a confirmed-fraud marker (salted hash only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FraudMarker'
+      responses:
+        '202': { description: Marker accepted and blinded into the registry }
+        '400': { description: Invalid marker (e.g. hashed_id not 64-hex) }
+
+  /risk/psi-query:
+    post:
+      summary: PSI membership check — is this (blinded) payee a known mule?
+      description: >
+        The caller sends Q = H(payee)^a (a blinded group element). The coordinator returns
+        Q^b and its blinded marker set; the caller completes the match locally. The coordinator
+        cannot recover the payee.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [q_blinded]
+              properties:
+                q_blinded:
+                  type: string
+                  description: Decimal string of H(payee)^a mod P (a 2048-bit integer).
+      responses:
+        '200':
+          description: PSI response
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [qb, blinded_markers]
+                properties:
+                  qb:
+                    type: string
+                    description: Decimal string of H(payee)^(ab) mod P.
+                  blinded_markers:
+                    type: array
+                    description: The set { H(y)^b } for local matching.
+                    items: { type: string }
+
+  /risk/outcome:
+    post:
+      summary: Report what the caller did with a high-risk result (feedback loop)
+      description: Lets the consortium learn which interventions actually stopped loss. No PII.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [result, action]
+              properties:
+                result: { type: string, enum: [flagged, clean] }
+                action: { type: string, enum: [blocked, warned_and_aborted, warned_and_proceeded, allowed] }
+      responses:
+        '202': { description: Outcome recorded }
+
+components:
+  schemas:
+    FraudMarker:
+      $ref: './schema/fraud_marker.schema.json'

@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/dhirendrasrajput/Bharat-Direct/fic/schema/fraud_marker.schema.json",
+  "title": "FRC Fraud Marker (Stage 0)",
+  "description": "A marker for a CONFIRMED bad entity, shared as a salted hash. By design this schema contains NO personally identifiable information: no names, account numbers, balances, or transaction data.",
+  "type": "object",
+  "required": ["hashed_id", "entity_type", "marker_type", "reported_at"],
+  "additionalProperties": false,
+  "properties": {
+    "hashed_id": {
+      "type": "string",
+      "description": "Salted SHA-256 of the identifier (hex). The raw identifier is never transmitted.",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "entity_type": {
+      "type": "string",
+      "description": "What kind of identifier was hashed.",
+      "enum": ["account", "vpa", "device", "msisdn"]
+    },
+    "marker_type": {
+      "type": "string",
+      "description": "Why this entity is marked. Stage 0 shares only confirmed/reported fraud.",
+      "enum": ["confirmed_mule", "reported_fraud", "frozen_by_lea"]
+    },
+    "confidence": {
+      "type": "string",
+      "description": "How firmly the contributor stands behind this marker.",
+      "enum": ["reported", "confirmed", "adjudicated"],
+      "default": "confirmed"
+    },
+    "reported_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the contributor confirmed the marker (UTC)."
+    },
+    "reference": {
+      "type": "string",
+      "description": "Optional non-identifying case reference (e.g. an NCRP/1930 acknowledgement id). MUST NOT contain customer PII.",
+      "maxLength": 64
+    }
+  }
+}
